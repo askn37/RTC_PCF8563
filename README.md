@@ -105,11 +105,11 @@ RTCが通常モードで駆動していれば真を返す。
 
 ### bool isAlarm (void)
 
-RTCがアラーム割込（INPピン＝LOW）を発生中なら真を返す。
+RTCがアラーム割込（INTピン＝LOW）を発生中なら真を返す。
 
 ### bool isTimer (void)
 
-RTCがタイマー割込（INPピン＝LOW）を発生中なら真を返す。
+RTCがタイマー割込（INTピン＝LOW）を発生中なら真を返す。
 
 ### uint8_t getStatus (void)
 
@@ -128,7 +128,7 @@ RTCの現在のステータスを読み込んで返す。
 RTCから時刻情報を取得して、bcddatetime\_t 構造体（BCDカレンダー時刻型）で返す。
 bcddatetime\_t 構造体には date と time メンバーがあり、
 いずれも BCD形式である。
-これを epoch や MJD に変換するには 
+これを epoch や MJD に変換するには
 [BCD日時変換](https://github.com/askn37/Futilities#bcdtimeh)
 を参照のこと。
 
