@@ -36,6 +36,14 @@ bool RTC_PCF8563::isRunning (void) {
     return !(_cs1 & RTC_CTRL_STOP);     // STOP bit is nagative
 }
 
+bool RTC_PCF8563::isAlarm (void) {
+    return (getStatus() & RTC_CTRL_AF);
+}
+
+bool RTC_PCF8563::isTimer (void) {
+    return (getStatus() & RTC_CTRL_TF);
+}
+
 uint8_t RTC_PCF8563::getStatus (void) {
     Wire.beginTransmission(_i2caddr);
     Wire.write(0U);

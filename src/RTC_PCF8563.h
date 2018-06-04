@@ -57,6 +57,8 @@ public :
     bool begin (long = I2C_SPEED_STANDARD, uint8_t = PCF8563_ADDR);
     bool reset (void);
     bool isRunning (void);
+    bool isAlarm (void);
+    bool isTimer (void);
     uint8_t getStatus (void);
     bcddatetime_t now (bool = true);
     time_t epoch (bool = true);
