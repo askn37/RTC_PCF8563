@@ -1,0 +1,49 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RTC_PCF8563	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+reset	KEYWORD2
+isRunning	KEYWORD2
+getStatus	KEYWORD2
+now	KEYWORD2
+epoch	KEYWORD2
+adjust	KEYWORD2
+activeAlarm	KEYWORD2
+setAlarm	KEYWORD2
+activeTimer	KEYWORD2
+setTimer	KEYWORD2
+getTimer	KEYWORD2
+setClockOut KEYWORD2
+getClockOut	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+PCF8563_ADDR	LITERAL1
+I2C_SPEED_STANDARD	LITERAL1
+I2C_SPEED_DOUBLE	LITERAL1
+RTC_CTRL_STOP	LITERAL1
+RTC_CTRL_TITP	LITERAL1
+RTC_CTRL_AF	LITERAL1
+RTC_CTRL_TF	LITERAL1
+RTC_CTRL_AIE	LITERAL1
+RTC_CTRL_TIE	LITERAL1
+RTC_COT_DISABLE	LITERAL1
+RTC_COT_32KHZ	LITERAL1
+RTC_COT_1KHZ	LITERAL1
+RTC_COT_32HZ	LITERAL1
+RTC_COT_1HZ	LITERAL1
+RTC_TIMER_DISABLE	LITERAL1
+RTC_TIMER_4KHZ	LITERAL1
+RTC_TIMER_64HZ	LITERAL1
+RTC_TIMER_1S	LITERAL1
+RTC_TIMER_60S	LITERAL1
+
