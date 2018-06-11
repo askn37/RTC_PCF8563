@@ -55,6 +55,7 @@ private :
     uint8_t _wday = 0;
 public :
     bool begin (long = I2C_SPEED_STANDARD, uint8_t = PCF8563_ADDR);
+    void setClock (long speed) { _speed = speed; Wire.setClock(_speed); }
     bool reset (void);
     bool isRunning (void);
     bool isAlarm (void);
