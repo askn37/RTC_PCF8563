@@ -28,11 +28,11 @@ Playground にも以前から対応ライブラリが数種登録されている
 
 2. ライブラリマネージャで読み込む
 
-  スケッチ -> ライブラリをインクルード -> .ZIP形式のライブラリをインストール...
+    スケッチ -> ライブラリをインクルード -> .ZIP形式のライブラリをインストール...
 
 3. 依存関係があるライブラリも同様に読み込む
 
-	[Futilities](https://github.com/askn37/Futilities) -- BCDカレンダー時刻型関数ライブラリを含む
+    [Futilities](https://github.com/askn37/Futilities) -- BCDカレンダー時刻型関数ライブラリを含む
 
 ## とっかかり
 
@@ -87,8 +87,9 @@ I2Cバスを有効化し、RTCとの通信を準備する。
 I2C通信に成功すれば真を返す。
 
 第1引数は I2C速度で、省略時の既定値は I2C\_SPEED\_STANDARD（100Khz）である。
-MCUが対応していれば I2C\_SPEED\_DOUBLE（200Khz）や
-I2C\_SPEED\_FAST（400Khz）も指定できる。だが、Arduino の場合はほぼ無視されるだろう。
+MCUが対応していれば I2C\_SPEED\_DOUBLE（200Khz）も使えるが、
+I2C\_SPEED\_FAST（400Khz）は指定しても
+（PCF8563が対応する最大速度を超えてしまうので）正しく機能しないだろう。
 
 第2引数は RTCの I2Cアドレスを指定する。
 PCF8563 の場合の省略時の既定値は 0x51 である。
@@ -203,10 +204,10 @@ INTピン出力はアラームとタイマーで共用である。
 ```
 TIMERFLAG == 0xDDHHMMWW
 
-    DD = BCD 01 - 31 day,     HEX 0x80 is Disable
-    HH = BCD 00 - 23 hour,    HEX 0x80 is Disable
-    MM = BCD 00 - 59 minute,  HEX 0x80 is Disable
-    WW = BCD 00 - 06 weekday, HEX 0x80 is Disable
+  DD = BCD 01 - 31 day,     HEX 0x80 is Disable
+  HH = BCD 00 - 23 hour,    HEX 0x80 is Disable
+  MM = BCD 00 - 59 minute,  HEX 0x80 is Disable
+  WW = BCD 00 - 06 weekday, HEX 0x80 is Disable
 ```
 
 曜日は日曜 == 0 〜 土曜 == 6 である。

@@ -25,7 +25,6 @@
 
 #define I2C_SPEED_STANDARD  100000
 #define I2C_SPEED_DOUBLE    200000
-#define I2C_SPEED_FAST      400000
 
 #define RTC_CTRL_STOP       0x20
 #define RTC_CTRL_TITP       0x10
@@ -48,6 +47,7 @@
 
 class RTC_PCF8563 {
 private :
+    long _speed;
     uint8_t _i2caddr = 0;
     uint8_t _cs1 = 0;
     uint8_t _cs2 = 0;

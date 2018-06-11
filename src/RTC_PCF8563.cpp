@@ -17,13 +17,14 @@
 #include "RTC_PCF8563.h"
 
 bool RTC_PCF8563::begin (long speed, uint8_t i2caddr) {
-    if (!_i2caddr) Wire.begin();
+    if (!_speed) Wire.begin();
     _i2caddr = i2caddr;
-    Wire.setClock(speed);
+    _speed = speed;
     return isRunning();
 }
 
 bool RTC_PCF8563::reset (void) {
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(0U);                     // Start address
     Wire.write(0U);                     // CS1
@@ -45,6 +46,7 @@ bool RTC_PCF8563::isTimer (void) {
 }
 
 uint8_t RTC_PCF8563::getStatus (void) {
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(0U);
     Wire.endTransmission(false);
@@ -62,6 +64,7 @@ bcddatetime_t RTC_PCF8563::now (bool twice) {
     // Twice read RTC
     do {
         t_old = t_bcd.time;
+        Wire.setClock(_speed);
         Wire.beginTransmission(_i2caddr);
         Wire.write(0U);                     // Start address
         Wire.endTransmission(false);
@@ -94,6 +97,7 @@ time_t RTC_PCF8563::epoch (bool twice) {
 bool RTC_PCF8563::adjust (bcddatetime_t t_bcd) {
     uint16_t t_year = wbtod(t_bcd.date >> 16);
     uint8_t century_bit = ((t_year / 100) % 4 == 0) ? 0 : 0x80;
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(2U);                             // start address
     Wire.write(t_bcd.time & 0x7F);              // second
@@ -115,6 +119,7 @@ bool RTC_PCF8563::activeAlarm (bool t_enable) {
     _cs2 &= ~RTC_CTRL_AF;
     if (t_enable) _cs2 |=  RTC_CTRL_AIE;
     else          _cs2 &= ~RTC_CTRL_AIE;
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(1U);
     Wire.write(_cs2);
@@ -126,6 +131,7 @@ bool RTC_PCF8563::activeTimer (bool t_enable) {
     _cs2 &= ~RTC_CTRL_TF;
     if (t_enable) _cs2 |=  RTC_CTRL_TIE;
     else          _cs2 &= ~RTC_CTRL_TIE;
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(1U);
     Wire.write(_cs2);
@@ -137,6 +143,7 @@ bool RTC_PCF8563::activeTimer (bool t_enable) {
 // 0x80 bit is disable
 //
 bool RTC_PCF8563::setAlarm (const bcdtime_t alarmTime) {
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(9U);                     // start address
     Wire.write((alarmTime >> 8) & 0xFF);
@@ -148,6 +155,7 @@ bool RTC_PCF8563::setAlarm (const bcdtime_t alarmTime) {
 
 bcdtime_t RTC_PCF8563::getAlarm (void) {
     uint8_t t_min, t_hour, t_mday, t_week;
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(9U);                     // Start address
     Wire.endTransmission(false);
@@ -162,6 +170,7 @@ bcdtime_t RTC_PCF8563::getAlarm (void) {
 }
 
 bool RTC_PCF8563::setTimer (const uint16_t timer) {
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(0xEU);                   // start address
     Wire.write((timer >> 8) & 0xFF);
@@ -171,6 +180,7 @@ bool RTC_PCF8563::setTimer (const uint16_t timer) {
 
 uint16_t RTC_PCF8563::getTimer (void) {
     uint8_t t_ctrl, t_count;
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(0xEU);                   // Start address
     Wire.endTransmission(false);
@@ -181,6 +191,7 @@ uint16_t RTC_PCF8563::getTimer (void) {
 }
 
 bool RTC_PCF8563::setClockOut (uint8_t clock) {
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(0xDU);                   // start address
     Wire.write(clock);
@@ -188,6 +199,7 @@ bool RTC_PCF8563::setClockOut (uint8_t clock) {
 }
 
 uint8_t RTC_PCF8563::getClockOut (void) {
+    Wire.setClock(_speed);
     Wire.beginTransmission(_i2caddr);
     Wire.write(0xDU);                   // Start address
     Wire.endTransmission(false);
