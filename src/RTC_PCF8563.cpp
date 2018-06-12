@@ -138,6 +138,17 @@ bool RTC_PCF8563::activeTimer (bool t_enable) {
     return !Wire.endTransmission();
 }
 
+bool RTC_PCF8563::activePulse (bool t_enable) {
+    if (!isRunning()) return false;
+    if (t_enable) _cs2 |=  RTC_CTRL_TITP;
+    else          _cs2 &= ~RTC_CTRL_TITP;
+    Wire.setClock(_speed);
+    Wire.beginTransmission(_i2caddr);
+    Wire.write(1U);
+    Wire.write(_cs2);
+    return !Wire.endTransmission();
+}
+
 //
 // alarmTime = 0xDDHHmmWW
 // 0x80 bit is disable

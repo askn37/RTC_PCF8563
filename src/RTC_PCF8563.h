@@ -69,6 +69,7 @@ public :
     bool setAlarm (bcdtime_t);
     bcdtime_t getAlarm (void);
     bool activeTimer (bool);
+    bool activePulse (bool);
     bool setTimer (uint16_t);
     uint16_t getTimer (void);
     bool setClockOut (uint8_t);
