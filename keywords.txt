@@ -9,6 +9,7 @@ RTC_PCF8563	KEYWORD1
 #######################################
 
 begin	KEYWORD2
+setClock	KEYWORD2
 reset	KEYWORD2
 isRunning	KEYWORD2
 getStatus	KEYWORD2
