@@ -21,7 +21,7 @@ setAlarm	KEYWORD2
 activeTimer	KEYWORD2
 setTimer	KEYWORD2
 getTimer	KEYWORD2
-setClockOut KEYWORD2
+setClockOut	KEYWORD2
 getClockOut	KEYWORD2
 
 #######################################
