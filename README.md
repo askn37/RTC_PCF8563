@@ -352,8 +352,7 @@ GPSは 9600bps（購入時初期値）に設定しておき
 GPSの TXピンを D5に、RXピンを D6に結線する。
 
 このスケッチは
-[GPS_MTK333X](https:/github.com/askn37/GPS_MTK333X)、
-[MultiUART](https:/github.com/askn37/MultiUART)
+[GPS_MTK333X](https:/github.com/askn37/GPS_MTK333X)
 ライブラリを使用する。
 
 ### CenturyLeapDay.ino
@@ -379,6 +378,7 @@ RTCの INTピンは LEDのカソードに、LEDのアノードは適切な抵抗
 
 ## 改版履歴
 
+- 0.1.2
 - 0.1.1
 
 ## 使用許諾

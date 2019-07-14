@@ -29,8 +29,8 @@ void setup (void) {
     RTC.activeAlarm(false);                 // before alarm disable
 
     RTC.activeTimer(false);                 // current timer
-    RTC.setTimer(RTC_TIMER_64HZ + 8);       // 8Hz (125msec) 
-    // RTC.setTimer(RTC_TIMER_4KHZ + 1);       // 4096Hz (244usec) 
+    RTC.setTimer(RTC_TIMER_64HZ + 8);       // 8Hz (125msec)
+    // RTC.setTimer(RTC_TIMER_4KHZ + 1);       // 4096Hz (244usec)
 
     RTC.activeTimer(true);                  // Active Timer
     RTC.activePulse(true);                 // Active Plulses

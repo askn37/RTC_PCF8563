@@ -45,11 +45,11 @@ void loop (void) {
 }
 
 void viewRtc (void) {
-	bcddatetime_t bcddatetime = RTC.now(false);
-	Serial.print(bcddatetime.date, HEX);
-	Serial.write(' ');
-	Serial.print(bcdTimeToTimeString(bcddatetime.time));
-	Serial.println();
+    bcddatetime_t bcddatetime = RTC.now(false);
+    Serial.print(bcddatetime.date, HEX);
+    Serial.write(' ');
+    Serial.print(bcdTimeToTimeString(bcddatetime.time));
+    Serial.println();
 }
 
 // end of code
